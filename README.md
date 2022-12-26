@@ -1,6 +1,6 @@
 # LNTIP
-LNTIP es un proyecto que te permite enviar y recibir pagos a través de la red Lightning de Bitcoin de manera sencilla y segura.
-Es una version extendia del repositorio
+LNTIP es una aplicación sencilla que te permite enviar y recibir propinas a través de la red Lightning de Bitcoin de manera sencilla.
+Es una versión extendida del repositorio
 
 [Francisco Calderón (@grunch) - Rust Lightning Workshop](https://github.com/grunch/rust-lightning-workshop)
 
@@ -12,7 +12,7 @@ Lightning Network es una capa adicional a la red de Bitcoin que permite realizar
 * Interfaz de usuario amigable para enviar y recibir pagos.
 * Integración con el monedero LND (Lightning Network Daemon) para acceder a la red Lightning de manera segura.
 * Posibilidad de generar y escanear invoices (facturas) en formato QR.
-* Historial de transacciones para ver el estado de tus pagos.
+* Historial de transacciones para ver el estado de tus pagos y propinas recibidas.
 
 # Instalación y uso
 Para instalar y utilizar LNTIP sigue estos pasos:
