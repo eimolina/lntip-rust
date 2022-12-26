@@ -1,6 +1,6 @@
 use crate::lightning;
 use hex::FromHex;
-use rocket::serde::{json::Json, Serialize, json};
+use rocket::serde::{json::Json, Serialize};
 use tonic_openssl_lnd::lnrpc::{Amount,invoice::InvoiceState};
 
 #[derive(Serialize, Default)]
