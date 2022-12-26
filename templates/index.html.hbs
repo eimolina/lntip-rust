@@ -1,0 +1,69 @@
+{{#*inline "content"}}
+<div class="main-container">
+    <div class="balance-container">
+        <h4>Saldo Actual</h4>
+        <h1><b id="sats">0</b><b> sats</b></h1>
+        <div id="actions">
+            <a href="/new_payment"  class="btn btn-danger" >Enviar</a>
+            <a href="/new_invoice" class="btn btn-success">Recibir</a>
+        </div>
+    </div>
+    <div class="invoices-container">
+        <table id="invoices-tbl" class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">FECHA CREADO</th>
+                <th scope="col">DESCRIPCIÓN</th>
+                <th scope="col">MONTO</th>
+                <th scope="col">ESTATUS</th>
+                <th scope="col">FECHA PAGADO</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    <div id="descripcion">
+        <b>TorogozDev</b>
+        <span> - Desarrollado con Rust</span>
+    </div>
+    </div>
+</div>
+
+{{/inline}}
+{{#*inline "scripts"}}
+<script src="/public/main.js"></script>
+<script>
+    getBalance()
+    .then((data) => {
+      $("#sats").html(new Intl.NumberFormat().format(data.balance));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    getListInvoice()
+    .then((data) => {
+      console.log("LIST INVOICES", data);
+      let tbody = $("#invoices-tbl tbody")[0];
+      data.invoices.forEach((i) => {
+        // Crea un nuevo elemento tr
+        const row = document.createElement("tr");
+        let fecha_pago = i.settle_date > 0 ? date_formatter.format(new Date(i.settle_date * 1000)) : "";
+        let estado =
+          i.state == 2 ? "<b class='state created'>CREADO</b>" : "<b class='state settled'>PAGADO</b>";
+        insertTd(row, false, date_formatter.format(new Date(i.creation_date * 1000)));
+        insertTd(row, false, i.memo);
+        insertTd(row, true, "<b>"+i.value + '</b> sats');
+        insertTd(row, true, estado);
+        insertTd(row, false, fecha_pago);
+        tbody.appendChild(row);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+</script>
+{{/inline}}
+{{#*inline "styles"}}
+<link rel="stylesheet" href="/public/styles.css">
+</link>
+{{/inline}}
+{{~> layout~}}

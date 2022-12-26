@@ -1,0 +1,60 @@
+{{#*inline "content"}}
+<div class="center-box">
+    <img src="/public/logo.jpg" class="rounded-circle" width="150"/>
+    <div id="form-invoice" class="mt-1 mb-1 collapse">
+        <form autocomplete="off" class="row mt-3 g-3" id="form">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="text" id="description" class="form-control"> <label for="description">Descripción</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" id="amount" class="form-control" required>
+                    <label for="amount">Monto</label>
+                </div>
+                <div class="mb-3">
+                    <button type="button" id="send-btn" class="btn btn-success">Crear Factura</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="invoice" class="mt-5 mb-5 collapse bg-light rounded-3  jumbotron" style="padding: 50px;">
+        <h3 id="invoice-memo">LNTip</h3>
+        <h3><span id="invoice-amount">0</span> SATs</h3>
+        <div id="qrcode"></div>
+        <p class="lead">Esta factura expira en 10 minutos.</p>
+        <hr class="my-4">
+        <h6>Factura:</h6>
+        <button class="btn btn-success" id="btn-copiar-factura">
+            <span class="tooltiptext" id="myTooltip">Copiar</span>    
+        </button>
+        <input type="hidden" id="invoice-text" value=""/>
+        <hr class="my-4">
+    </div>
+    <div id="success-box" class="mt-5 mb-5 collapse bg-light jumbotron">
+        <hr class="my-4">
+        <p class="lead" align="center">¡Pago realizado correctamente!</p>
+        <hr class="my-4">
+         <div align="center">
+            <p><b>Tipo: </b><span>LIGHTNING NETWORK</span></p>
+            <p><b>Fecha: </b><span id="fechapago"></span></p>
+            <p><b>Descripcion: </b><span id="desc">Prueba de invoice</span></p>
+            <p><b>Valor: </b><span id="paid-value">1000 sats</span></p>
+            <p><b>Estado: </b><span id="invoice-state">PAGADO</span></p>
+        </div>
+        <a href="/"class="btn btn-success">Regresar a Inicio</a>
+    </div>
+    <div id="descripcion">
+        <b>TorogozDev</b>
+        <span> - Desarrollado con Rust</span>
+    </div>
+    <img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" class="rounded-circle" width="75"/>
+</div>
+{{/inline}}
+{{#*inline "scripts"}}
+<script src="/public/qrcode.min.js"></script>
+<script src="/public/main.js"></script>
+{{/inline}}
+{{#*inline "styles"}}
+<link rel="stylesheet" href="/public/styles.css"></link>
+{{/inline}}
+{{~> layout~}}

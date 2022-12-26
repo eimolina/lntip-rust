@@ -1,0 +1,38 @@
+{{#*inline "content"}}
+<div class="center-box">
+    <img src="/public/logo.jpg" class="rounded-circle" width="150"/>
+    <div id="form-payment" class="mt-1 mb-1 collapse">
+        <form autocomplete="off" class="row mt-3 g-3" id="form">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <textarea rows="10" id="payment-request" class="form-control"></textarea> <label for="description">Factura</label>
+                </div>
+                <div class="mb-3">
+                    <button type="button" id="payment-btn" class="btn btn-success">Enviar pago</button>
+                    <a href="/" id="home-btn" class="btn btn-success hidden">Regresar a Inicio</a>
+                </div>
+            </div>
+        </form>
+        <div id="payment-message" class="alert hidden">
+            <span>Pago efectuado correctamente</span>
+        </div>
+    </div>
+    <div id="descripcion">
+        <b>TorogozDev</b>
+        <span> - Desarrollado con Rust</span>
+    </div>
+    <img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" class="rounded-circle" width="75"/>
+</div>
+{{/inline}}
+{{#*inline "scripts"}}
+<script src="/public/main.js"></script>
+<script>
+    $(()=>{
+        $("#form-payment").collapse("show");
+    })
+</script>
+{{/inline}}
+{{#*inline "styles"}}
+<link rel="stylesheet" href="/public/styles.css"></link>
+{{/inline}}
+{{~> layout~}}
